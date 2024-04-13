@@ -1,5 +1,126 @@
 
-import csv
+"""
+Group-2 Safa& Joud
+
+We've used csv and regular expression libraries in our code. This code deals with data from csv files
+and includes 10 functions- main,loading data, clear and prepare, analyse data, visualise data, 
+maximum, minimum, average, ascending order, descending order. 
+
+"""
+
+
+
+
+
+import csv 
+import re
+
+def visualisedata(c,column):
+    print("Stage 4: Visualise Data")
+    print("Column:",column)
+    print("Legend each\"*\" represents 5 units\n")
+    for i in c:  
+        if i<5:
+            y=1
+            z=int(y)
+        else:
+            y=i//5
+            z=int(y)
+        print("*"*z)
+    print("\n\nVisualisation completed!!\n")
+    # the python interpreter after running this code will go back to main
+
+
+
+
+def ascendingorder(c):
+    for i in range(len(c)-1):
+            if c[i]<c[i+1]:
+                continue
+            elif c[i]>c[i+1]:
+                x=c[i]
+                c[i]=c[i+1]
+                c[i+1]=x
+                ascendingorder(c)
+            
+    return c
+
+
+def descendingorder(c):
+        for i in range(len(c)-1):
+            if c[i]>c[i+1]:
+                continue
+            elif c[i]<c[i+1]:
+                x=c[i]
+                c[i]=c[i+1]
+                c[i+1]=x
+                descendingorder(c)
+        return c
+
+
+
+
+def analysedata(c,column):
+    while True:
+        try:
+            print("Stage 3: Analyse Data")
+            value2=input("Would you like to sort the column in\n\n1.Ascending order\n2.Descending order\n\nEnter your choice:")
+            if value2=="1" or value2=="Ascending order" or value2=="ascending order":
+                updated_c= ascendingorder(c)
+            elif value2=="2" or value2=="descending order" or value2=="Descending order":
+                updated_c= descendingorder(c)
+            else:
+                raise TypeError
+            print("Column values are sorted in option:",value2)
+            print(updated_c)
+
+            break
+            
+        except:
+            print("Please give a valid input\n")
+            analysedata(c)
+    visualisedata(updated_c,column)
+    
+
+
+
+
+def maximum(x):
+    length=len(x)
+    maxnum=x[0]
+    for i in range(length):
+        if x[i]==" " or x[i]==None or x[i]=="":
+            continue 
+        elif x[i]>maxnum:
+            maxnum=x[i]
+            
+    return maxnum 
+
+def minimum(x):
+    length=len(x)
+    minnum=x[0]
+    for i in range(length):
+
+        if x[i]==" " or x[i]==None or x[i]=="":
+            continue
+        elif x[i]<minnum:
+            minnum=x[i]
+        
+    return minnum
+
+def average(x):
+    length=len(x)
+    sum=0
+    for i in range(length):
+        if x[i]==" " or x[i]==None or x[i]=="":
+            sum+=0 
+        else:
+            sum+=x[i]
+    avgnum=sum/length
+    return avgnum
+    
+        
+        
 
 
 
@@ -104,6 +225,8 @@ def clearand_prepare(d):
         except:
             print("\nWrong input!!!\n")
             continue
+    
+    analysedata(c,column)
 
     
             
