@@ -2,6 +2,7 @@
 import csv
 
 
+
 def clearand_prepare(d):
     try:
                    
@@ -104,7 +105,7 @@ def clearand_prepare(d):
             print("\nWrong input!!!\n")
             continue
 
-
+    
             
 
         
