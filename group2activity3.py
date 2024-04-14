@@ -78,7 +78,7 @@ def analysedata(c,column):
             
         except:
             print("Please give a valid input\n")
-            analysedata(c)
+            analysedata(c,column)
     visualisedata(updated_c,column)
     
 
